@@ -39,7 +39,7 @@ syn match pigeonRule /.\+/ contained skipwhite contains=pigeonRuleCodeBlock,pige
 " Rule 'innards'
 syn match pigeonChoice   /\// contained display
 syn match pigeonRepeater /[+\*?]/ contained display
-syn match pigeonSpecial  /[!.&^i]/ contained display
+syn match pigeonSpecial  /[!.&^]/ contained display
 
 syn match pigeonRangeValue /.-[^\\]/ contained display
 syn match pigeonRangeValue /.-\\u[a-fA-F0-9]\{4,6}/ contained display contains=pigeonUnicode
