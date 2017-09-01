@@ -34,10 +34,11 @@ syn match pigeonLabel      /\w\+:/ contains=pigeonLabelDelim nextgroup=pigeonRul
 syn match pigeonLabelDelim /:/ contained display
 
 " A rule is basically anything, but contains a bunch of other things.
-syn region pigeonRule start='' end=/^\w/me=s-1 end=/^\s*$/me=s-1 contained contains=pigeonRuleCodeBlock,pigeonLabel,pigeonDelimiter,pigeonGrouping,pigeonSpecial,pigeonRange,pigeonString,pigeonChoice,pigeonRepeater
+syn region pigeonRule start='' end=/^\w/me=s-1 end=/^\s*$/me=s-1 contained contains=pigeonRuleCodeBlock,pigeonComment,pigeonLabel,pigeonDelimiter,pigeonGrouping,pigeonSpecial,pigeonRange,pigeonString,pigeonChoice,pigeonRepeater
 
 " Rule 'innards'
-syn match pigeonChoice   /\// contained display
+syn match pigeonChoice   /\/[^/*]/ contained display
+syn match pigeonChoice   /\/$/ contained display
 syn match pigeonRepeater /[+\*?]/ contained display
 syn match pigeonSpecial  /[!.&^]/ contained display
 
