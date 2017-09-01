@@ -48,23 +48,26 @@ syn match pigeonRangeValue /\\u[a-fA-F0-9]\{4,6}-\\u[a-fA-F0-9]\{4,6}/ contained
 
 syn region pigeonGrouping matchgroup=pigeonDelimiter start=/(/ end=/)/ contained skipwhite keepend contains=pigeonRule display
 syn region pigeonRange    matchgroup=pigeonDelimiter start=/\[^/ start=/\[/ end=/\]/ contained skipwhite contains=pigeonRangeValue,pigeonUnicode display
-syn region pigeonString   matchgroup=pigeonDelimiter start=/"/ end=/"/ contained display contains=pigeonUnicode
-syn region pigeonString   matchgroup=pigeonDelimiter start=/'/ end=/'/ contained display contains=pigeonUnicode
-syn region pigeonString   matchgroup=pigeonDelimiter start=/`/ end=/`/ contained display contains=pigeonUnicode
+syn region pigeonString   matchgroup=pigeonDelimiter start=/"/ end=/"/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
+syn region pigeonString   matchgroup=pigeonDelimiter start=/'/ end=/'/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
+syn region pigeonString   matchgroup=pigeonDelimiter start=/`/ end=/`/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 
-hi link pigeonChoice     Conditional
-hi link pigeonComment    Comment
-hi link pigeonDelimiter  Delimiter
-hi link pigeonLabel      Define
-hi link pigeonLabelDelim Delimiter
-hi link pigeonRangeValue Constant
-hi link pigeonRepeater   Function
-hi link pigeonRuleId     Identifier
-hi link pigeonRuleName   String
-hi link pigeonRuleOp     Conditional
-hi link pigeonSpecial    Special
-hi link pigeonString     String
-hi link pigeonTodo       Todo
-hi link pigeonUnicode    Constant
+syn match pigeonCaseInsensitive 'i' contained
+
+hi link pigeonCaseInsensitive Special
+hi link pigeonChoice          Conditional
+hi link pigeonComment         Comment
+hi link pigeonDelimiter       Delimiter
+hi link pigeonLabel           Define
+hi link pigeonLabelDelim      Delimiter
+hi link pigeonRangeValue      Constant
+hi link pigeonRepeater        Function
+hi link pigeonRuleId          Identifier
+hi link pigeonRuleName        String
+hi link pigeonRuleOp          Conditional
+hi link pigeonSpecial         Special
+hi link pigeonString          String
+hi link pigeonTodo            Todo
+hi link pigeonUnicode         Constant
 
 let b:current_syntax = "pigeon"
