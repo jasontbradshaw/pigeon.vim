@@ -2,8 +2,6 @@
 package main
 }
 
-{ var x = 1 }
-
 Grammar ← __ initializer:( Initializer __ )? rules:( Rule __ )+ EOF {
     pos := c.astPos()
 

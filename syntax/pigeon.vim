@@ -51,6 +51,8 @@ syn match pigeonRangeValue /\\u[a-fA-F0-9]\{4}-\\u[a-fA-F0-9]\{4}/ contained dis
 syn match pigeonRangeValue /.-\\U[a-fA-F0-9]\{8}/ contained display contains=pigeonUnicode
 syn match pigeonRangeValue /\\U[a-fA-F0-9]\{8}-./ contained display contains=pigeonUnicode
 syn match pigeonRangeValue /\\U[a-fA-F0-9]\{8}-\\U[a-fA-F0-9]\{8}/ contained display contains=pigeonUnicode
+syn match pigeonRangeValue /\\p[LMNCPZS]/ contained display contains=pigeonUnicode
+syn match pigeonRangeValue /\\p{\w\+}/ contained display contains=pigeonUnicode
 
 syn region pigeonGrouping matchgroup=pigeonDelimiter start=/(/ end=/)/ contained skipwhite keepend contains=pigeonRule display
 syn region pigeonRange    matchgroup=pigeonDelimiter start=/\[^/ start=/\[/ end=/\]/ contained skipwhite contains=pigeonRangeValue,pigeonUnicode display nextgroup=pigeonCaseInsensitive
