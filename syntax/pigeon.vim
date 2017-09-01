@@ -34,7 +34,7 @@ syn match pigeonLabel      /\w\+:/ contains=pigeonLabelDelim nextgroup=pigeonRul
 syn match pigeonLabelDelim /:/ contained display
 
 " A rule is basically anything, but contains a bunch of other things.
-syn region pigeonRule start=' ' end='^\s*$' end='^\w\+' contained contains=pigeonRuleCodeBlock,pigeonLabel,pigeonDelimiter,pigeonGrouping,pigeonSpecial,pigeonRange,pigeonString,pigeonChoice,pigeonRepeater
+syn region pigeonRule start='' end=/^\w/me=s-1 end=/^\s*$/me=s-1 contained contains=pigeonRuleCodeBlock,pigeonLabel,pigeonDelimiter,pigeonGrouping,pigeonSpecial,pigeonRange,pigeonString,pigeonChoice,pigeonRepeater
 
 " Rule 'innards'
 syn match pigeonChoice   /\// contained display
@@ -52,11 +52,12 @@ syn region pigeonString   matchgroup=pigeonDelimiter start=/"/ end=/"/ contained
 syn region pigeonString   matchgroup=pigeonDelimiter start=/'/ end=/'/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 syn region pigeonString   matchgroup=pigeonDelimiter start=/`/ end=/`/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 
-syn match pigeonCaseInsensitive 'i' contained
+syn match pigeonCaseInsensitive 'i' contained display
 
 hi link pigeonCaseInsensitive Special
 hi link pigeonChoice          Conditional
 hi link pigeonComment         Comment
+hi link pigeonRuleComment     Comment
 hi link pigeonDelimiter       Delimiter
 hi link pigeonLabel           Define
 hi link pigeonLabelDelim      Delimiter
