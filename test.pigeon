@@ -4,6 +4,10 @@ package main
 
 { var x = 1 }
 
+RuleDefOp ← '=' / "<-" / '\u2190' / '\u27f5'
+
+Foo = [\u1234-\U12345678]
+
 Grammar ← __ initializer:( Initializer __ )? rules:( Rule __ )+ EOF {
     pos := c.astPos()
 
@@ -157,7 +161,6 @@ SemanticPredOp ← ( '&' / '!' ) {
     return string(c.text), nil
 }
 
-RuleDefOp ← '=' / "<-" / '\u2190' / '\u27f5'
 
 SourceChar ← .
 Comment ← MultiLineComment / SingleLineComment
@@ -268,7 +271,7 @@ UnicodeClassEscape ← 'p' (
         return nil, errors.New("Unicode class not terminated")
     }
     )
-SingleCharUnicodeClass ← [LMNCPZS]
+SingleCharUnicodeClass ← [LMNCPZS\u1234]
 
 AnyMatcher ← "." {
     any := ast.NewAnyMatcher(c.astPos(), ".")
