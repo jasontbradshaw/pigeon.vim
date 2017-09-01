@@ -61,7 +61,7 @@ syn match pigeonChar      /'\\.'/ contained display contains=pigeonUnicode,pigeo
 syn match pigeonChar      /'[^\\]'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
 
 syn region pigeonGrouping matchgroup=pigeonDelimiter start=/(/ end=/)/ contained skipwhite keepend contains=pigeonRule display
-syn region pigeonRange    matchgroup=pigeonDelimiter start=/\[^/ start=/\[/ end=/\]/ contained skipwhite contains=pigeonRangeValue,pigeonUnicode display nextgroup=pigeonCaseInsensitive
+syn region pigeonRange    matchgroup=pigeonDelimiter start=/\[^/ start=/\[/ end=/\]/ contained contains=pigeonRangeValue,pigeonUnicode display nextgroup=pigeonCaseInsensitive
 syn region pigeonString   matchgroup=pigeonDelimiter start=/"/ end=/"/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 syn region pigeonString   matchgroup=pigeonDelimiter start=/`/ end=/`/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 
