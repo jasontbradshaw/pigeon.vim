@@ -47,7 +47,7 @@ syn match pigeonRangeValue /\\u[a-fA-F0-9]\{4,6}-./ contained display contains=p
 syn match pigeonRangeValue /\\u[a-fA-F0-9]\{4,6}-\\u[a-fA-F0-9]\{4,6}/ contained display contains=pigeonUnicode
 
 syn region pigeonGrouping matchgroup=pigeonDelimiter start=/(/ end=/)/ contained skipwhite keepend contains=pigeonRule display
-syn region pigeonRange    matchgroup=pigeonDelimiter start=/\[^/ start=/\[/ end=/\]/ contained skipwhite contains=pigeonRangeValue,pigeonUnicode display
+syn region pigeonRange    matchgroup=pigeonDelimiter start=/\[^/ start=/\[/ end=/\]/ contained skipwhite contains=pigeonRangeValue,pigeonUnicode display nextgroup=pigeonCaseInsensitive
 syn region pigeonString   matchgroup=pigeonDelimiter start=/"/ end=/"/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 syn region pigeonString   matchgroup=pigeonDelimiter start=/'/ end=/'/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 syn region pigeonString   matchgroup=pigeonDelimiter start=/`/ end=/`/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
