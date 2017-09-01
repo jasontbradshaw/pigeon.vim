@@ -18,23 +18,23 @@ syn match   pigeonComment /\/\/.*$/ contains=pigeonTodo
 syn region  pigeonComment start="/\*" end="\*/" contains=pigeonTodo
 
 " Rules
-syn match pigeonRuleId /^\w\+/ skipwhite nextgroup=pigeonRuleName,pigeonRuleOp
+syn match pigeonRuleId /^\w\+/ skipwhite skipnl nextgroup=pigeonRuleName,pigeonRuleOp
 
 syn region pigeonRuleName start=/"/ end=/"/ skipwhite skipnl nextgroup=pigeonRuleOp
 syn region pigeonRuleName start=/'/ end=/'/ skipwhite skipnl nextgroup=pigeonRuleOp
 syn region pigeonRuleName start=/`/ end=/`/ skipwhite skipnl nextgroup=pigeonRuleOp
 
-syn match pigeonRuleOp "<-" skipwhite contained nextgroup=pigeonRule
-syn match pigeonRuleOp "="  skipwhite contained nextgroup=pigeonRule
-syn match pigeonRuleOp "←"  skipwhite contained nextgroup=pigeonRule
-syn match pigeonRuleOp "⟵"  skipwhite contained nextgroup=pigeonRule
+syn match pigeonRuleOp "<-" skipwhite skipnl contained nextgroup=pigeonRule
+syn match pigeonRuleOp "="  skipwhite skipnl contained nextgroup=pigeonRule
+syn match pigeonRuleOp "←"  skipwhite skipnl contained nextgroup=pigeonRule
+syn match pigeonRuleOp "⟵"  skipwhite skipnl contained nextgroup=pigeonRule
 
 " Rule labels
 syn match pigeonLabel      /\w\+:/ contains=pigeonLabelDelim nextgroup=pigeonRule
 syn match pigeonLabelDelim /:/ contained display
 
 " A rule is basically anything, but contains a bunch of other things.
-syn match pigeonRule /.\+/ contained skipwhite contains=pigeonRuleCodeBlock,pigeonLabel,pigeonDelimiter,pigeonGrouping,pigeonSpecial,pigeonRange,pigeonString,pigeonChoice,pigeonRepeater
+syn region pigeonRule start=' ' end='^\s*$' end='^\w\+' contained contains=pigeonRuleCodeBlock,pigeonLabel,pigeonDelimiter,pigeonGrouping,pigeonSpecial,pigeonRange,pigeonString,pigeonChoice,pigeonRepeater
 
 " Rule 'innards'
 syn match pigeonChoice   /\// contained display
