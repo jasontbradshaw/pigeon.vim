@@ -58,12 +58,12 @@ syn match pigeonCaseInsensitive 'i' contained display
 hi link pigeonCaseInsensitive Special
 hi link pigeonChoice          Conditional
 hi link pigeonComment         Comment
-hi link pigeonRuleComment     Comment
 hi link pigeonDelimiter       Delimiter
 hi link pigeonLabel           Define
 hi link pigeonLabelDelim      Delimiter
 hi link pigeonRangeValue      Constant
 hi link pigeonRepeater        Function
+hi link pigeonRuleComment     Comment
 hi link pigeonRuleId          Identifier
 hi link pigeonRuleName        String
 hi link pigeonRuleOp          Conditional
