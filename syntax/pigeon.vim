@@ -9,7 +9,7 @@ endif
 
 " Code blocks, both outside and inside rules.
 syn include @go syntax/go.vim
-syn region pigeonCodeBlock matchgroup=pigeonDelimiter start=/^{/ end=/}$/ contains=@go
+syn region pigeonCodeBlock     matchgroup=pigeonDelimiter start=/^{/ end=/}$/ contains=@go
 syn region pigeonRuleCodeBlock matchgroup=pigeonDelimiter start='{' end='}' skipwhite contained contains=@go
 
 " Comments
@@ -34,7 +34,7 @@ syn match pigeonLabel      /\w\+:/ contains=pigeonLabelDelim nextgroup=pigeonRul
 syn match pigeonLabelDelim /:/ contained display
 
 " A rule is basically anything, but contains a bunch of other things.
-syn region pigeonRule start='' end=/^\w/me=s-1 end=/^\s*$/me=s-1 contained contains=pigeonRuleCodeBlock,pigeonComment,pigeonLabel,pigeonDelimiter,pigeonGrouping,pigeonSpecial,pigeonRange,pigeonString,pigeonChoice,pigeonRepeater
+syn region pigeonRule start='' end=/^\w/me=s-1 end=/^\s*$/me=s-1 contained contains=pigeonRuleCodeBlock,pigeonComment,pigeonLabel,pigeonDelimiter,pigeonGrouping,pigeonSpecial,pigeonRange,pigeonChar,pigeonString,pigeonChoice,pigeonRepeater
 
 " Rule 'innards'
 syn match pigeonChoice   /\/[^/*]/ contained display
@@ -54,15 +54,22 @@ syn match pigeonRangeValue /\\U[a-fA-F0-9]\{8}-\\U[a-fA-F0-9]\{8}/ contained dis
 syn match pigeonRangeValue /\\p[LMNCPZS]/ contained display contains=pigeonUnicode
 syn match pigeonRangeValue /\\p{\w\+}/ contained display contains=pigeonUnicode
 
+syn match pigeonCharDelim /'/ contained display
+syn match pigeonChar      /'\\u[a-fA-F0-9]\{4}'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
+syn match pigeonChar      /'\\U[a-fA-F0-9]\{8}'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
+syn match pigeonChar      /'\\.'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
+syn match pigeonChar      /'[^\\]'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
+
 syn region pigeonGrouping matchgroup=pigeonDelimiter start=/(/ end=/)/ contained skipwhite keepend contains=pigeonRule display
 syn region pigeonRange    matchgroup=pigeonDelimiter start=/\[^/ start=/\[/ end=/\]/ contained skipwhite contains=pigeonRangeValue,pigeonUnicode display nextgroup=pigeonCaseInsensitive
 syn region pigeonString   matchgroup=pigeonDelimiter start=/"/ end=/"/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
-syn region pigeonString   matchgroup=pigeonDelimiter start=/'/ end=/'/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 syn region pigeonString   matchgroup=pigeonDelimiter start=/`/ end=/`/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 
 syn match pigeonCaseInsensitive 'i' contained display
 
 hi link pigeonCaseInsensitive Special
+hi link pigeonChar            String
+hi link pigeonCharDelim       Delimiter
 hi link pigeonChoice          Conditional
 hi link pigeonComment         Comment
 hi link pigeonDelimiter       Delimiter
