@@ -44,7 +44,7 @@ syn match pigeonSpecial  /[!.&^]/ contained display
 syn match pigeonUnicode  /\\u[a-fA-F0-9]\{4}/ contained display
 syn match pigeonUnicode  /\\U[a-fA-F0-9]\{8}/ contained display
 
-syn match pigeonRangeValue /.-[^\\]/ contained display
+syn match pigeonRangeValue /.-[^\\\]]/ contained display
 syn match pigeonRangeValue /.-\\u[a-fA-F0-9]\{4}/ contained display contains=pigeonUnicode
 syn match pigeonRangeValue /\\u[a-fA-F0-9]\{4}-./ contained display contains=pigeonUnicode
 syn match pigeonRangeValue /\\u[a-fA-F0-9]\{4}-\\u[a-fA-F0-9]\{4}/ contained display contains=pigeonUnicode
