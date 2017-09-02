@@ -60,7 +60,7 @@ syn match pigeonChar      /'\\U[a-fA-F0-9]\{8}'/ contained display contains=pige
 syn match pigeonChar      /'\\.'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
 syn match pigeonChar      /'[^\\]'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
 
-syn region pigeonGrouping matchgroup=pigeonDelimiter start=/(/ end=/)/ contained skipwhite keepend contains=pigeonRule display
+syn region pigeonGrouping matchgroup=pigeonDelimiter start=/(/ end=/)/ contained skipwhite keepend extend contains=pigeonRule display
 syn region pigeonRange    matchgroup=pigeonDelimiter start=/\[^/ start=/\[/ end=/\]/ contained contains=pigeonRangeValue,pigeonUnicode display nextgroup=pigeonCaseInsensitive
 syn region pigeonString   matchgroup=pigeonDelimiter start=/"/ end=/"/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 syn region pigeonString   matchgroup=pigeonDelimiter start=/`/ end=/`/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
