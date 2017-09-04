@@ -55,15 +55,15 @@ syn match pigeonRangeValue /\\p[LMNCPZS]/ contained display contains=pigeonUnico
 syn match pigeonRangeValue /\\p{\w\+}/ contained display contains=pigeonUnicode
 
 syn match pigeonCharDelim /'/ contained display
-syn match pigeonChar      /'\\u[a-fA-F0-9]\{4}'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
-syn match pigeonChar      /'\\U[a-fA-F0-9]\{8}'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
-syn match pigeonChar      /'\\.'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
-syn match pigeonChar      /'[^\\]'/ contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
+syn match pigeonChar      /'\\u[a-fA-F0-9]\{4}'/ keepend extend contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
+syn match pigeonChar      /'\\U[a-fA-F0-9]\{8}'/ keepend extend contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
+syn match pigeonChar      /'\\.'/ keepend extend contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
+syn match pigeonChar      /'[^\\]'/ keepend extend contained display contains=pigeonUnicode,pigeonCharDelim nextgroup=pigeonCaseInsensitive
 
 syn region pigeonGrouping matchgroup=pigeonDelimiter start=/(/ end=/)/ contained skipwhite keepend extend contains=pigeonRule display
 syn region pigeonRange    matchgroup=pigeonDelimiter start=/\[^/ start=/\[/ end=/\]/ contained contains=pigeonRangeValue,pigeonUnicode display nextgroup=pigeonCaseInsensitive
-syn region pigeonString   matchgroup=pigeonDelimiter start=/"/ end=/"/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
-syn region pigeonString   matchgroup=pigeonDelimiter start=/`/ end=/`/ contained display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
+syn region pigeonString   matchgroup=pigeonDelimiter start=/"/ end=/"/ contained keepend extend display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
+syn region pigeonString   matchgroup=pigeonDelimiter start=/`/ end=/`/ contained keepend extend display contains=pigeonUnicode nextgroup=pigeonCaseInsensitive
 
 syn match pigeonCaseInsensitive 'i' contained display
 
